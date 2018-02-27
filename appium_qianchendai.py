@@ -1,4 +1,6 @@
 from appium import  webdriver
+import time
+from appium.webdriver.common.touch_action import TouchAction
 #android environment
 
 desired_caps = {}
@@ -24,6 +26,29 @@ def swipeleft():
 #向左滑动三次
 for i in range(3):
     swipeleft()
+time.sleep(3)
+#点击立即体验按钮
+driver.find_element_by_id('com.xxzb.fenwoo:id/btn_start').click()
+driver.find_element_by_id('com.xxzb.fenwoo:id/btn_login').click()
+driver.find_element_by_id('com.xxzb.fenwoo:id/et_phone').send_keys('13760246701')
+driver.find_element_by_id('com.xxzb.fenwoo:id/btn_next_step').click()
+driver.find_element_by_id('com.xxzb.fenwoo:id/et_pwd').send_keys('python_test')
+driver.find_element_by_id('com.xxzb.fenwoo:id/btn_next_step').click()
 
 
 
+driver.find_element_by_id('com.xxzb.fenwoo:id/btn_confirm').click()
+driver.find_element_by_id('com.xxzb.fenwoo:id/btn_gesturepwd_guide').click()
+driver.find_element_by_id('com.xxzb.fenwoo:id/right_btn').click()
+picture = driver.find_element_by_id('com.xxzb.fenwoo:id/gesturepwd_create_lockview')
+scope =picture.size
+print(scope)
+x4 = scope ['width']/6
+y4 = scope ['height']/6
+x_tep = scope ['width']/6
+y_tep = scope ['height']/6
+print(x_tep,y_tep)
+action = TouchAction(driver)
+action.press(x=x_tep, y=y_tep).wait(100).move_to(x=600, y=0).release().wait(100).perform()
+print(x_tep*5)
+#driver.find_element_by_id('com.xxzb.fenwoo:id/right_btn').click()
