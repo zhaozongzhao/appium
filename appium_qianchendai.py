@@ -42,13 +42,14 @@ driver.find_element_by_id('com.xxzb.fenwoo:id/btn_gesturepwd_guide').click()
 driver.find_element_by_id('com.xxzb.fenwoo:id/right_btn').click()
 picture = driver.find_element_by_id('com.xxzb.fenwoo:id/gesturepwd_create_lockview')
 scope =picture.size
+ss=picture.location
 print(scope)
-x4 = scope ['width']/6
-y4 = scope ['height']/6
-x_tep = scope ['width']/6
-y_tep = scope ['height']/6
-print(x_tep,y_tep)
+x4 = ss['x']+scope ['width']/6
+y4 = ss['y']+scope ['height']/2
+x_step = scope ['width']/6
+y_step = scope ['height']/6
+print(x_step,y_step)
 action = TouchAction(driver)
-action.press(x=x_tep, y=y_tep).wait(100).move_to(x=600, y=0).release().wait(100).perform()
-print(x_tep*5)
+action.press(x=x4, y=y4).wait(100).move_to(x=x_step*4, y=0).wait(200).move_to(x=0,y=-y_step*2).release().wait(100).perform()
+print(x_step*5)
 #driver.find_element_by_id('com.xxzb.fenwoo:id/right_btn').click()
